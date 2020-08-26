@@ -5,11 +5,13 @@ class Header extends Component {
     render() {
         return(
             <MovieContextConsumer>
-                {({movieName}) => (
+                {({movieName}) => { 
+                    console.log(movieName)
+                   return  (
                     <header>
                         <h1>{(movieName === '' || movieName === " " ? "Nothing is playing": `Current movie playing is ${movieName}`)}</h1>
                     </header>
-                )}
+                )}}
 
                 
             </MovieContextConsumer>

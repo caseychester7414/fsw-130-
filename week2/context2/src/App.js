@@ -13,23 +13,8 @@ class App extends Component {
     movieList: []
   }
 
-  handleChange = (event) => {
-    event.preventDefault()
-    const { name, value } = event.target
-    this.setState({
-      [name]: value
-    })
-  }
 
-  eventListUpdate = (event) => {
-    event.preventDefault()
-    this.setState({
-      movieList: this.state.movieList.concat(this.state.movie),
-      movie: ''
-    })
-    console.log(this.state.movieList)
-  }
-
+  
   
 
   render(props) {
@@ -40,34 +25,34 @@ class App extends Component {
       <div className="center">
         <Header></Header>
         <MovieContextConsumer>
-          {({ movieName, nextMovie }) => (
+          {({ moviesArray, nextMovie,eventListUpdate,handleChange,movie }) => (
             
             <div>
               {/* {onClick(event) {
     this.eventListUpdate();
-    nextMovie(this.state.movie);
+    nextMovie(movie);
   }} */}
               {/* <p>{(movieName === '' || movieName === " " ? "Nothing is playing": `Current movie playing is ${movieName}`)}</p> */}
               <input
                 type="text"
                 name="movie"
                 placeholder="movieName"
-                value={this.state.movie}
-                onChange={this.handleChange}
+                value={movie}
+                onChange={handleChange}
               />
-              {/* <h1>{this.state.movie}</h1> */}
+              {/* <h1>{movie}</h1> */}
               <br />
               
-              <button className="buttons" onClick={(this.eventListUpdate)}
+              <button className="buttons" onClick={(eventListUpdate)}
               >Submit</button>
               
               {/* This state could be used to update current featured movies(It's not a bug it's a feature) */}
-              <button className="buttons" onClick={() => nextMovie(this.state.movie)}>update</button>
+              <button className="buttons" onClick={() => nextMovie(movie)}>update</button>
               <br />
              
-              {/* <MovieItems moviesCombined={this.state.movieList} /> */}
+              {/* <MovieItems moviesCombined={movieList} /> */}
               <ol>
-            {this.state.movieList.map(movieCombine => <li key={movieCombine}>{movieCombine}</li>)}
+            {moviesArray.map((movieCombine,index) => <li key={index}>{movieCombine.name}</li>)}
         </ol>
             </div>
           )}
