@@ -64,7 +64,7 @@ class Input extends Component {
                     <p>{this.state.description}</p>
                 <img src={this.state.uglyImage} alt="asfgasgt"/>
                 <div>
-            {this.state.uglyList.map(uglyItemsList => <div key={uglyItemsList}><img src={uglyItemsList} alt="idk"/><input /></div>
+            {this.state.uglyList.map(uglyItemsList => <div key={uglyItemsList}><img src={uglyItemsList} alt="idk"/><input /></div>)}
             
 
           
